@@ -23,7 +23,10 @@
 # Skins to install (Confluence)
 # Space separated list is supported,
 # e.g. SKINS="Confluence"
-  SKINS="Confluence"
+  SKINS=""
+
+# remove default skin included in Kodi (yes/no)
+  SKIN_REMOVE_SHIPPED="no"
 
 # Default Skin (Confluence)
   SKIN_DEFAULT="Confluence"
@@ -94,6 +97,9 @@
 
 # build with Samba Client support (mounting SAMBA shares with KODI) (yes / no)
   KODI_SAMBA_SUPPORT="yes"
+
+# include initial language addons for Kodi (yes / no)
+  KODI_LANGUAGE_ADDONS="yes"
 
 # build with NFS support (mounting nfs shares via the OS) (yes / no)
   NFS_SUPPORT="yes"
