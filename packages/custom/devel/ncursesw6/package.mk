@@ -33,6 +33,7 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 PKG_CONFIGURE_OPTS_TARGET="--with-shared \
+                           --with-termlib=tinfo \
                            --without-debug \
                            --without-ada \
                            --without-cxx \
@@ -56,7 +57,8 @@ makeinstall_target() {
 
 post_install() {
   mkdir -p $INSTALL/usr/lib
-    cp -P $ROOT/$PKG_BUILD/.install_tmp/usr/lib/libncursesw.so.* $INSTALL/usr/lib
+    cp -P $ROOT/$PKG_BUILD/.install_tmp/usr/lib/*.so $INSTALL/usr/lib
+    cp -P $ROOT/$PKG_BUILD/.install_tmp/usr/lib/*.so.* $INSTALL/usr/lib
 
   mkdir -p $INSTALL/usr/share
     cp -R $ROOT/$PKG_BUILD/.install_tmp/usr/share/* $INSTALL/usr/share
