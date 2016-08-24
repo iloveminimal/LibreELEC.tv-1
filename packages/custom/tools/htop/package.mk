@@ -25,7 +25,7 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://htop.sourceforge.net/"
 PKG_URL="http://hisham.hm/htop/releases/$PKG_VERSION/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain ncursesw6"
+PKG_DEPENDS_TARGET="toolchain ncurses"
 PKG_PRIORITY="optional"
 PKG_SECTION="tools"
 PKG_SHORTDESC="htop: Htop is an ncurses based interactive process viewer for Linux."
@@ -36,8 +36,7 @@ PKG_AUTORECONF="yes"
 
 PKG_CONFIGURE_OPTS_TARGET="ac_cv_func_malloc_0_nonnull=yes \
             ac_cv_func_realloc_0_nonnull=yes \
-            ac_cv_lib_ncursesw_addnwstr=yes \
-            --enable-unicode \
+            --disable-unicode \
             --enable-openvz \
             --enable-vserver \
             --enable-cgroup \
@@ -49,10 +48,7 @@ pre_configure_target() {
   cd $ROOT/$PKG_BUILD
   rm -rf .$HOST_NAME
 
-  PKG_CONFIG_PATH="$(get_build_dir ncursesw6)/.install_tmp/usr/lib/pkgconfig"
-  CFLAGS="$CFLAGS -I$(get_build_dir ncursesw6)/.install_tmp/usr/include"
-  LDFLAGS="$LDFLAGS -L$(get_build_dir ncursesw6)/.install_tmp/usr/lib"
-  LIBS="-L$(get_build_dir ncursesw6)/.install_tmp/usr/lib -lncursesw"
+  export CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/ncurses"
 }
 
 makeinstall_target() {
