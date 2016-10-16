@@ -4,7 +4,6 @@ default-jre
 default-jre-headless
 fonts-dejavu-extra
 g++
-g++-4.8
 gawk
 gperf
 java-common
@@ -32,7 +31,6 @@ liblwp-protocol-https-perl
 libncurses5-dev
 libnet-http-perl
 libsigsegv2
-libstdc++-4.8-dev
 libtext-unidecode-perl
 libtinfo-dev
 libwww-perl
